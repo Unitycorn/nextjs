@@ -1,0 +1,17 @@
+import { shuffle } from '@/library/helpers';
+
+/*
+1. Exportiert eine Funktion als default, die req und res entgegegennimmt.
+2. Die GET-Parameter, die man beim Aufruf der URL nutzt, sind in req.query
+zu finden. Holt dort den Wert für text heraus, nehmt "" als Standard.
+Zum testen einfach console.log nutzen, ABER der Text wird im Editor-Terminal
+ausgegeben, nicht im Browser!
+3. Mischt den Text durcheinander und fügt ihn dann wieder zusammen.
+4. Gebt den Text in einem JSON-Objekt unter dem Schlüssel text zurück.
+*/
+
+export default function shuffletext(req, res) {
+  const { text = '' } = req.query;
+  const shuffledText = shuffle(text).join('');
+  return res.status(200).json({ text: shuffledText });
+}
